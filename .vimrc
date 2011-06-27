@@ -2,9 +2,11 @@ set nocompatible
 
 behave mswin
 source $VIMRUNTIME/mswin.vim
+let mapleader=","
 
 " Autoload package bundles
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 set selection=inclusive
 set ruler       " show the cursor position all the time
