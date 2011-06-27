@@ -1,0 +1,5 @@
+Notes about installation
+========================
+
+ * To build command-t you need to "sudo apt-get install ruby1.8-dev" and "rake make"
+
