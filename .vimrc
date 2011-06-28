@@ -45,6 +45,9 @@ set softtabstop=4
 set autoindent
 set smarttab
 
+" Enable line numbers
+set number
+
 " Mouse always enabled (also in terminal)
 set mouse=a
 
@@ -57,3 +60,9 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=999 columns=999
+endif
