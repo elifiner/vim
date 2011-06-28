@@ -14,6 +14,7 @@ set showcmd     " display incomplete commands
 
 filetype on
 filetype plugin on
+filetype indent on
 
 " Remember more commands and search history
 set history=1000
@@ -54,16 +55,6 @@ set number
 
 " Mouse always enabled (also in terminal)
 set mouse=a
-
-" Disable arrow keys to learn to use HKJL
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
 
 " Maximize GUI
 if has("gui_running")
