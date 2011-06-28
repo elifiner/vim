@@ -30,7 +30,11 @@ set hlsearch
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*~
 
 " Black colorscheme
-colorscheme desert
+if has("gui_running")
+  colorscheme desert
+else
+  colorscheme torte
+endif
 syntax on
 syntax sync fromstart
 let python_highlight_space_errors=1
@@ -61,8 +65,10 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
+" Maximize GUI
 if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
   set lines=999 columns=999
 endif
+
+" Ctags configuration
+set tags=~/mytags
