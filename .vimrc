@@ -62,4 +62,4 @@ if has("gui_running")
 endif
 
 " Ctags configuration
-set tags=~/mytags
+set tags=./tags;/
