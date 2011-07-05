@@ -1,0 +1,4 @@
+*.pyc
+.VimballRecord
+.netrwhist
+*.swp
