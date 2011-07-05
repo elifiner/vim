@@ -36,9 +36,11 @@ if has("gui_running")
 else
   colorscheme torte
 endif
+
 syntax on
 syntax sync fromstart
 let python_highlight_space_errors=1
+let g:pyflakes_use_quickfix=0
 
 set backspace=eol,start,indent
 
@@ -56,10 +58,21 @@ set number
 " Mouse always enabled (also in terminal)
 set mouse=a
 
-" Maximize GUI
-if has("gui_running")
-  set lines=999 columns=999
-endif
-
 " Ctags configuration
 set tags=./tags;/
+
+" Automatically change directory to the current buffer
+set autochdir
+
+" Autocompletion on the command line 
+set wildchar=<Tab> wildcharm=<C-Z> wildmenu wildmode=full
+
+" Buffer switching with auto-complete
+nnoremap <F6> :b <C-Z>
+
+" Shortcuts
+noremap <Leader>ft :FufTag<CR>
+noremap <F4> :cnext<CR>
+noremap <S-F4> :cprev<CR>
+noremap <Leader>gg :Ggrep\ <cword><CR>:copen<CR>
+
