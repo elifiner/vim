@@ -52,27 +52,42 @@ set softtabstop=4
 set autoindent
 set smarttab
 
-" Enable line numbers
+" Miscelaneous
 set number
-
-" Mouse always enabled (also in terminal)
 set mouse=a
+set hidden
 
 " Ctags configuration
-set tags=./tags;/
-
-" Automatically change directory to the current buffer
-set autochdir
+set tags=tags;./tags;/
+set tags+=/home/elig/source/tlib/tags
+set tags+=/home/elig/source/tests/tags
+set tags+=/usr/local/lib/python2.7/tags
 
 " Autocompletion on the command line 
-set wildchar=<Tab> wildcharm=<C-Z> wildmenu wildmode=full
+set wildchar=<Tab> wildmenu wildmode=full
 
 " Buffer switching with auto-complete
-nnoremap <F6> :b <C-Z>
 
 " Shortcuts
-noremap <Leader>ft :FufTag<CR>
+noremap <Leader>gg :silent Ggrep <cword><CR>:copen<CR>
+noremap <Leader>gG :copen<CR>:Ggrep 
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gdiff<CR>
+noremap <Leader>vl :e ~/.vim/.vimrc<CR>
+noremap <Leader>vs :w<CR>:so %<CR>
 noremap <F4> :cnext<CR>
 noremap <S-F4> :cprev<CR>
-noremap <Leader>gg :Ggrep\ <cword><CR>:copen<CR>
+noremap <Leader>b :CommandTBuffer<CR>
+noremap <C-Tab> <C-W><C-W>
+noremap <S-C-F4> :bufdo bd<CR>
+noremap <C-F4> :bd<CR>
 
+" Autocompletion
+inoremap <C-Space> <C-N>
+
+" Status bar
+set laststatus=2 " Enables the status line at the bottom of Vim
+set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\ 
+            \
+" Miscelaneous
+set noautochdir
