@@ -58,7 +58,7 @@ set mouse=a
 set hidden
 
 " Ctags configuration
-set tags=tags;./tags;/
+set tags=./tags;/
 set tags+=/home/elig/source/tlib/tags
 set tags+=/home/elig/source/tests/tags
 set tags+=/usr/local/lib/python2.7/tags
