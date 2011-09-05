@@ -30,6 +30,10 @@ set hlsearch
 
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*~
 
+" Highlight extra whitespace in red
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+\%#\@<!$/
+
 " Black colorscheme
 if has("gui_running")
   colorscheme desert
@@ -79,8 +83,10 @@ noremap <F4> :cnext<CR>
 noremap <S-F4> :cprev<CR>
 noremap <Leader>b :CommandTBuffer<CR>
 noremap <C-Tab> <C-W><C-W>
+noremap <S-C-Tab> <C-W>W
 noremap <S-C-F4> :bufdo bd<CR>
 noremap <C-F4> :bd<CR>
+noremap <Leader>/ :nohl<CR>
 
 " Autocompletion
 inoremap <C-Space> <C-N>
