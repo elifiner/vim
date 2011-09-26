@@ -84,8 +84,8 @@ noremap <S-F4> :cprev<CR>
 noremap <Leader>b :CommandTBuffer<CR>
 noremap <C-Tab> <C-W><C-W>
 noremap <S-C-Tab> <C-W>W
-noremap <S-C-F4> :bufdo bd<CR>
-noremap <C-F4> :bd<CR>
+noremap <S-C-F4> :bufdo BD<CR>
+noremap <C-F4> :BD<CR>
 noremap <Leader>/ :nohl<CR>
 
 " Autocompletion
