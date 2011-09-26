@@ -93,7 +93,8 @@ inoremap <C-Space> <C-N>
 
 " Status bar
 set laststatus=2 " Enables the status line at the bottom of Vim
-set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\ 
+" set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\ 
+set statusline=\ %F\ %m\ %=%l,%c\ 
             \
 " Miscelaneous
 set noautochdir
