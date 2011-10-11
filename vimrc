@@ -88,7 +88,7 @@ noremap <Leader>gg :silent Ggrep <cword><CR>:copen<CR>
 noremap <Leader>gG :copen<CR>:Ggrep
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gdiff<CR>
-noremap <Leader>vl :e ~/.vim/.vimrc<CR>
+noremap <Leader>vl :e ~/.vimrc<CR>
 noremap <Leader>vs :w<CR>:so %<CR>
 noremap <Leader>sw :%s/\s\+$//e<CR>:nohl<CR>
 noremap <F4> :cnext<CR>
