@@ -1,8 +1,12 @@
 set nocompatible
 
 behave mswin
-source $VIMRUNTIME/mswin.vim
 let mapleader=","
+
+" Windows copy/paste equivalents
+noremap <C-V> "+p
+noremap <C-C> "+y
+noremap <C-X> "+x
 
 " Autoload package bundles
 call pathogen#runtime_append_all_bundles()
@@ -27,6 +31,7 @@ set smartcase
 set incsearch
 set showmatch   " show matching parens
 set hlsearch
+nohlsearch
 
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.pyo,*~
 
@@ -49,12 +54,20 @@ let g:pyflakes_use_quickfix=0
 set backspace=eol,start,indent
 
 " Proper tab handling (insert spaces)
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
-set autoindent
-set smarttab
+set tabstop=4 shiftwidth=4 softtabstop=4 autoindent smarttab expandtab
+autocmd FileType html,css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Comment out blocks of code
+function! CommentBlock(comment)
+  if getline(".") =~ '^'.a:comment
+    call setline(".", substitute(getline("."), "^".a:comment.'\~ ', "", ""))
+  else
+    call setline(".", substitute(getline("."), "^", a:comment."~ ", ""))
+  endif
+endfunction
+
+autocmd FileType python map <Leader>/ :call CommentBlock('#')<CR> 
+autocmd FileType vim map <Leader>/ :call CommentBlock('"')<CR> 
 
 " Miscelaneous
 set number
@@ -67,21 +80,20 @@ set tags+=/home/elig/source/tlib/tags
 set tags+=/home/elig/source/tests/tags
 set tags+=/usr/local/lib/python2.7/tags
 
-" Autocompletion on the command line 
-set wildchar=<Tab> wildmenu wildmode=full
-
-" Buffer switching with auto-complete
+" Autocompletion on the command line
+set wildchar=<Tab> wildcharm=<Tab> wildmenu wildmode=full
 
 " Shortcuts
 noremap <Leader>gg :silent Ggrep <cword><CR>:copen<CR>
-noremap <Leader>gG :copen<CR>:Ggrep 
+noremap <Leader>gG :copen<CR>:Ggrep
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gdiff<CR>
 noremap <Leader>vl :e ~/.vim/.vimrc<CR>
 noremap <Leader>vs :w<CR>:so %<CR>
+noremap <Leader>sw :%s/\s\+$//e<CR>:nohl<CR>
 noremap <F4> :cnext<CR>
 noremap <S-F4> :cprev<CR>
-noremap <Leader>b :CommandTBuffer<CR>
+noremap <C-B> :b <Tab>
 noremap <C-Tab> <C-W><C-W>
 noremap <S-C-Tab> <C-W>W
 noremap <S-C-F4> :bufdo BD<CR>
@@ -93,7 +105,7 @@ inoremap <C-Space> <C-N>
 
 " Status bar
 set laststatus=2 " Enables the status line at the bottom of Vim
-set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\ 
+set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\
             \
 " Miscelaneous
 set noautochdir
