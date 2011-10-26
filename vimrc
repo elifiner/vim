@@ -4,9 +4,12 @@ behave mswin
 let mapleader=","
 
 " Windows copy/paste equivalents
-noremap <C-V> "+p
+noremap <C-V> "+P
 noremap <C-C> "+y
 noremap <C-X> "+x
+inoremap <C-V> <ESC>"+p
+inoremap <C-C> <ESC>"+y
+inoremap <C-X> <ESC>"+x
 
 " Autoload package bundles
 call pathogen#runtime_append_all_bundles()
@@ -55,11 +58,14 @@ set backspace=eol,start,indent
 
 " Proper tab handling (insert spaces)
 set tabstop=4 shiftwidth=4 softtabstop=4 autoindent smarttab expandtab
-autocmd FileType html,css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html,css,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" SVG support
+autocmd BufNewFile,BufRead *.svg setfiletype svg 
 
 " Comment out blocks of code
 function! CommentBlock(comment)
-  if getline(".") =~ '^'.a:comment
+  if getline(".") =~ '^'.a:comment.'\~'
     call setline(".", substitute(getline("."), "^".a:comment.'\~ ', "", ""))
   else
     call setline(".", substitute(getline("."), "^", a:comment."~ ", ""))
@@ -99,13 +105,13 @@ noremap <S-C-Tab> <C-W>W
 noremap <S-C-F4> :bufdo BD<CR>
 noremap <C-F4> :BD<CR>
 noremap <Leader>/ :nohl<CR>
+noremap <C-J> :silent :set textwidth=100<CR>gw:set textwidth=0<CR>
 
 " Autocompletion
 inoremap <C-Space> <C-N>
 
 " Status bar
 set laststatus=2 " Enables the status line at the bottom of Vim
-set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\
-            \
+set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=line\ %l\ col\ %c\ [%{getcwd()}]
 " Miscelaneous
 set noautochdir
