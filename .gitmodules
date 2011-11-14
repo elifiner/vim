@@ -10,6 +10,6 @@
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object
-[submodule "bundle/pytest"]
-	path = bundle/pytest
-	url = https://github.com/alfredodeza/pytest.vim.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
