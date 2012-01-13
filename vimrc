@@ -129,6 +129,9 @@ set noautochdir
 set guioptions-=m  " remove menu bar
 set guioptions-=T  " remove toolbar
 
+" Error format detection
+set errorformat+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
 " ******* Shortcuts ******* 
 
 " git grep current word and open in quickfix window
@@ -159,6 +162,8 @@ noremap <Leader>t :CommandT ~/source/tlib<CR>
 noremap <Leader>T :CommandT %:p:h<CR>
 " run py.test on current file sending output to quickfix window
 noremap <F5> :update<CR>:cexpr system('py.test --tb=short '.expand('%:p'))<CR>:cwindow<CR>
+" run py.test on current file sending output to quickfix window
+noremap <C-F5> :update<CR>:cexpr system(expand('%:p'))<CR>:copen<CR>
 " switch to next window
 noremap <C-Tab> <C-W><C-W>
 " switch to previous window
@@ -177,8 +182,17 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <Leader>/ :nohl<CR>
 " change directory to directory of current file
 noremap <silent> <Leader>d :cd %:p:h<CR>
+" replace current word with yanked text
+nnoremap S "_diwP
+" replace selected text with yanked text
+vnoremap S "_dP
+" goto next tag (forward in tag stack, oppiste of Shift-T)
+noremap <A-t> :tag!<CR>
+" search selected text using *(star) search
+vnoremap <silent> * "hy/<C-r>h<CR>
 
 " ******* Commands ******* 
 command! LargeFont set guifont=Monospace\ 16
 command! SmallFont set guifont=Monospace\ 10
 command! CD cd %:p:h
+command! W w
