@@ -153,10 +153,6 @@ noremap <F4> :copen<CR>:cnext<CR>
 " previous error or grep result in quickfix window
 noremap <S-F4> :copen<CR>:cprev<CR>
 " show list of open buffers in a single line
-noremap <C-B> :b <Tab>
-" show list of open buffers in a menu
-noremap <Leader>b :CommandTBuffer<CR>
-" select a file from tlib sources
 noremap <Leader>t :CommandT ~/source/tlib<CR>
 " select a file from current directory
 noremap <Leader>T :CommandT %:p:h<CR>
@@ -190,6 +186,10 @@ vnoremap S "_dP
 noremap <A-t> :tag!<CR>
 " search selected text using *(star) search
 vnoremap <silent> * "hy/<C-r>h<CR>
+" change directory to current file
+noremap <silent> <Leader>c :cd %:p:h<CR>
+" switch to last buffers using Lusty (ignoring killed buffers)
+map <silent> <C-^> :LustyJugglePrevious<CR>
 
 " ******* Commands ******* 
 command! LargeFont set guifont=Monospace\ 16
