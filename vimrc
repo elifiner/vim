@@ -163,7 +163,7 @@ noremap <Leader>T :CommandT %:p:h<CR>
 " run py.test on current file sending output to quickfix window
 noremap <F5> :update<CR>:cexpr system('py.test --tb=short '.expand('%:p'))<CR>:cwindow<CR>
 " run py.test on current file sending output to quickfix window
-noremap <C-F5> :update<CR>:cexpr system(expand('%:p'))<CR>:copen<CR>
+noremap <C-F5> :update<CR>:cexpr system('python2.7 '.expand('%:p'))<CR>:copen<CR>
 " switch to next window
 noremap <C-Tab> <C-W><C-W>
 " switch to previous window
