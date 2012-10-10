@@ -47,6 +47,7 @@ set backspace=eol,start,indent
 set formatoptions=rol
 set tabstop=4 shiftwidth=4 softtabstop=4 autoindent smarttab expandtab
 autocmd FileType html,css,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+set encoding=utf8
 
 " Comment out blocks of code
 function! CommentBlock()
@@ -67,6 +68,7 @@ set number
 set mouse=a
 set hidden
 set guifont=Monospace\ 10
+set nowrap
 
 " Swap and backup files
 set nobackup
@@ -127,7 +129,7 @@ set errorformat+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 " git grep current word and open in quickfix window
 noremap <Leader>gg :silent Ggrep <cword><CR>:copen<CR>
 " git grep some text
-noremap <Leader>gG :copen<CR>:Ggrep
+noremap <Leader>gG :copen<CR>:Ggrep 
 " git blame
 noremap <Leader>gb :Gblame<CR>
 " git diff
@@ -153,9 +155,9 @@ noremap <C-Tab> <C-W><C-W>
 " switch to previous window
 noremap <S-C-Tab> <C-W>W
 " close all buffers
-noremap <S-C-F4> :bufdo BD<CR>
+noremap <S-C-F4> :bufdo BD!<CR>
 " close current buffer
-noremap <C-F4> :BD<CR>
+noremap <C-F4> :BD!<CR>
 " wrap line or visual at 100 chars (complements <S-J>
 noremap <silent> <C-J> gqq
 " autocompletion
@@ -178,6 +180,8 @@ map <silent> <C-^> :LustyJugglePrevious<CR>
 " ******* Commands *******
 command! LargeFont set guifont=Monospace\ 16
 command! SmallFont set guifont=Monospace\ 10
-command! RemoveTrailingSpaces %s/\s\+$//e
+command! TinyFont set guifont=Monospace\ 9
 command! CD cd %:p:h
 command! W w
+command! RTL set rightleft | set keymap=hebrew
+command! LTR set norightleft | set keymap=
